@@ -1,15 +1,15 @@
 package ch.hslu.mobpro.myfinances;
 
 public class CategoryDto {
-    private float id;
+    private long id;
     private String name;
     private boolean gain;
 
-    public float getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(float id) {
+    public void setId(long id) {
         this.id = id;
     }
 

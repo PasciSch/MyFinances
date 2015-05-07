@@ -20,6 +20,14 @@
             android:name=".Transactions"
             android:label="@string/title_activity_transactions" >
         </activity>
+        <activity
+            android:name=".Categories"
+            android:label="@string/title_activity_categories" >
+        </activity>
+        <activity
+            android:name=".Accounts"
+            android:label="@string/title_activity_accounts" >
+        </activity>
     </application>
 
 </manifest>

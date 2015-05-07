@@ -34,7 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO ACCOUNT(ID,NAME)" +
                 "VALUES (NULL,'Bargeld')");
         db.execSQL("INSERT INTO CATEGORY(ID,NAME,TYPE)" +
-                "VALUES (NULL,'ESSEN', -1)");
+                "VALUES (NULL,'Essen', -1)");
         db.execSQL("INSERT INTO CATEGORY(ID,NAME,TYPE)" +
                 "VALUES (NULL,'Lohn', 1)");
     }

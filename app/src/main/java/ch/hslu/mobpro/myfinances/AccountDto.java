@@ -1,14 +1,14 @@
 package ch.hslu.mobpro.myfinances;
 
 public class AccountDto {
-    private float id;
+    private long id;
     private String name;
 
-    public float getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(float id) {
+    public void setId(long id) {
         this.id = id;
     }
 

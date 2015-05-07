@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DbAdapter {
-    public static final String DB_Name = "dbname";
+    public static final String DB_Name = "MyFinacesDb";
     public static final int DB_Version = 1;
 
-    public static final String ACCOUNTING_ENTRY_Table = "AccountingEntry";
+    public static final String ACCOUNTING_ENTRY_Table = "ACCOUNTINGENTRY";
     public static final String DATE_Entry = "DATE";
     public static final String AMOUNT_Entry = "AMOUNT";
     public static final String DESCRIPTION_Entry = "DESCRIPTION";
@@ -58,7 +58,7 @@ public class DbAdapter {
         transaction.setId(id);
     }
 
-    public List<TransactionDto> getFirstTransaction()
+    public List<TransactionDto> getAllTransactions()
     {
         List<TransactionDto> transaction = new ArrayList<>();
         final Cursor result = db.query(
@@ -72,6 +72,31 @@ public class DbAdapter {
                         CATEGORY_Entry
                 },
                 null, null, null, null, null);
+        boolean found = result.moveToFirst();
+        while (found)
+        {
+            transaction.add(getNextTransaction(result));
+            found = result.moveToNext();
+        }
+        result.close();
+        return transaction;
+    }
+
+    public List<TransactionDto> getTransactionsOfAccount(long accountId)
+    {
+        List<TransactionDto> transaction = new ArrayList<>();
+        final Cursor result = db.query(
+                ACCOUNTING_ENTRY_Table,
+                new String[] {
+                        ID_Entry,
+                        DATE_Entry,
+                        AMOUNT_Entry,
+                        DESCRIPTION_Entry,
+                        ACCOUNT_Entry,
+                        CATEGORY_Entry
+                },
+                ACCOUNT_Entry + "=" + accountId,
+                null, null, null, null);
         boolean found = result.moveToFirst();
         while (found)
         {
@@ -137,7 +162,7 @@ public class DbAdapter {
 
     private AccountDto getNextAccount(Cursor cursor) {
         final AccountDto account = new AccountDto();
-        account.setId(cursor.getFloat(0));
+        account.setId(cursor.getLong(0));
         account.setName(cursor.getString(1));
         return account;
     }
@@ -186,7 +211,7 @@ public class DbAdapter {
 
     private CategoryDto getNextCategory(Cursor cursor) {
         final CategoryDto category = new CategoryDto();
-        category.setId(cursor.getFloat(0));
+        category.setId(cursor.getLong(0));
         category.setName(cursor.getString(1));
         category.setGain(cursor.getLong(2) == 1);
         return category;

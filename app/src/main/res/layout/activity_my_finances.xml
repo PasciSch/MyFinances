@@ -26,13 +26,15 @@
                 android:layout_row="0"
                 android:layout_columnWeight="1"
                 android:text="Kontos"
+                android:onClick="navigateToAccounts"
                 />
             <Button
                 android:layout_column="1"
                 android:layout_row="0"
                 android:layout_width="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="Kategorien" />
+                android:text="Kategorien"
+                android:onClick="navigateToCategories"/>
             <Button
                 android:layout_column="0"
                 android:layout_row="1"
