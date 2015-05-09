@@ -31,7 +31,7 @@ public class CategoryDto {
 
     @Override
     public String toString() {
-        String gainName = gain ? "In" : "Out";
+        String gainName = gain ? "in" : "out";
         return String.format("%s %s", this.name, gainName);
     }
 }

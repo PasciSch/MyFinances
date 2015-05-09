@@ -1,9 +1,18 @@
 <resources>
-    <string name="app_name">My Finances</string>
+    <string name="app_name">Meine Finanzen</string>
+
+    <string name="persistence_key_fastTransactionAdd">fastTransactionAdd</string>
+    <string name="persistence_key_defaultNumber">defaultNumber</string>
+    <string name="persistence_key_accountPreference">accountPreference</string>
+    <string name="persistence_key_categoryPreference">categoryPreference</string>
+
+    <string name="action_settings">Optionen</string>
+    <string name="title_activity_transactions">Transaktionen</string>
+    <string name="title_activity_categories">Kategorien</string>
+    <string name="title_activity_accounts">Kontos</string>
+    <string name="title_activity_analyzer">Auswertung</string>
+    <string name="title_activity_preferences">Präferenzen</string>
+    <string name="title_activity_transaction_readonly">TransactionReadonly</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_transactions">Transactions</string>
-    <string name="title_activity_categories">Categories</string>
-    <string name="title_activity_accounts">Accounts</string>
 </resources>

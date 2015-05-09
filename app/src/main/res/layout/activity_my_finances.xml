@@ -8,13 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ListView
-            android:id="@+id/entrylist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true">
-        </ListView>
         <GridLayout
+            android:id="@+id/buttonGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -24,6 +19,7 @@
             <Button
                 android:layout_column="0"
                 android:layout_row="0"
+                android:layout_width="110dp"
                 android:layout_columnWeight="1"
                 android:text="Kontos"
                 android:onClick="navigateToAccounts"
@@ -31,23 +27,44 @@
             <Button
                 android:layout_column="1"
                 android:layout_row="0"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_columnWeight="1"
+                android:layout_gravity="right"
                 android:text="Kategorien"
                 android:onClick="navigateToCategories"/>
             <Button
                 android:layout_column="0"
                 android:layout_row="1"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_columnWeight="1"
-                android:text="Auswertung" />
+                android:text="Auswertung"
+                android:onClick="navigateToAnalyzer"/>
             <Button
                 android:layout_column="1"
                 android:layout_row="1"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_columnWeight="1"
+                android:layout_gravity="right"
                 android:text="+ Transaktion"
                 android:onClick="navigateToTransaction"/>
         </GridLayout>
+
+        <View
+            android:id="@+id/simple_seperator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@id/buttonGrid"/>
+
+        <ListView
+            android:id="@+id/entrylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/buttonGrid"
+            android:layout_above="@id/simple_seperator"
+            android:layout_alignParentTop="true">
+        </ListView>
     </RelativeLayout>
 </RelativeLayout>

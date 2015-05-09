@@ -17,17 +17,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Datum" />
-
-            <EditText
-                android:id="@+id/entry_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Betrag">
                 <requestFocus />
             </TextView>
@@ -38,6 +27,17 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datum" />
+
+            <EditText
+                android:id="@+id/entry_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"/>
 
             <TextView
                 android:layout_width="match_parent"

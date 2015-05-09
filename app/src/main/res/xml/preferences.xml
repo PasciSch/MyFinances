@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="transactionPreferences"
+        android:title="Neue Transaktion Präferenzen">
+        <CheckBoxPreference
+            android:key="@string/persistence_key_fastTransactionAdd"
+            android:persistent="true"
+            android:summary="Beim aufstarten direckt eine neue Transaktion eintragen?"
+            android:title="Schnelle Transaktion"
+            android:defaultValue="false"/>
+        <EditTextPreference
+            android:key="@string/persistence_key_defaultNumber"
+            android:persistent="true"
+            android:summary="Der Standartbetrag bei neuen Transaktioen"
+            android:title="Standart Betrag"
+            android:inputType="number"
+            android:defaultValue=""/>
+        <ListPreference
+            android:key="@string/persistence_key_accountPreference"
+            android:persistent="true"
+            android:summary="Welches Konto soll vorselektiert sein?"
+            android:title="Häufigstes Konto"
+            android:defaultValue="1"
+            />
+        <ListPreference
+            android:key="@string/persistence_key_categoryPreference"
+            android:persistent="true"
+            android:summary="Welche Kategorie soll vorselektiert sein?"
+            android:title="Häufigste Kategorie"
+            android:defaultValue="1"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>

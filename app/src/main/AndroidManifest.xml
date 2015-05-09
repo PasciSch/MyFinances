@@ -28,6 +28,18 @@
             android:name=".Accounts"
             android:label="@string/title_activity_accounts" >
         </activity>
+        <activity
+            android:name=".Analyzer"
+            android:label="@string/title_activity_analyzer" >
+        </activity>
+        <activity
+            android:name=".PreferencesActivity"
+            android:label="@string/title_activity_preferences" >
+        </activity>
+        <activity
+            android:name=".TransactionReadonly"
+            android:label="@string/title_activity_transaction_readonly" >
+        </activity>
     </application>
 
 </manifest>

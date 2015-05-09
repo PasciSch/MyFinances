@@ -29,14 +29,42 @@ public class DbHelper extends SQLiteOpenHelper {
                 "NAME TEXT NOT NULL," +
                 "TYPE INTEGER NOT NULL" +
                 ")");
-        db.execSQL("INSERT INTO ACCOUNT(ID,NAME)" +
-                "VALUES (NULL,'Lohnkonto')");
-        db.execSQL("INSERT INTO ACCOUNT(ID,NAME)" +
-                "VALUES (NULL,'Bargeld')");
+
+        this.insertAccount(db, "Bargeld");
+        this.insertAccount(db, "LUKB Priv.");
+        this.insertAccount(db, "Postfinance");
+        this.insertAccount(db, "VISA Kred.");
+
+        this.insertSpendCategory(db, "Essen");
+        this.insertSpendCategory(db, "Parking");
+        this.insertSpendCategory(db, "Ausgang");
+        this.insertSpendCategory(db, "Arzt");
+        this.insertSpendCategory(db, "Ausleihen");
+        this.insertSpendCategory(db, "Studium");
+        this.insertSpendCategory(db, "Kontoübertrag");
+
+        this.insertGainCategory(db, "Lohn");
+        this.insertGainCategory(db, "Geschenk");
+        this.insertGainCategory(db, "Schuldrückzahlung");
+        this.insertGainCategory(db, "Kontoübertrag");
+    }
+
+    private void insertGainCategory(SQLiteDatabase db, String name)
+    {
         db.execSQL("INSERT INTO CATEGORY(ID,NAME,TYPE)" +
-                "VALUES (NULL,'Essen', -1)");
+                "VALUES (NULL,'" + name + "', 1)");
+    }
+
+    private void insertSpendCategory(SQLiteDatabase db, String name)
+    {
         db.execSQL("INSERT INTO CATEGORY(ID,NAME,TYPE)" +
-                "VALUES (NULL,'Lohn', 1)");
+                "VALUES (NULL,'" + name + "', -1)");
+    }
+
+    private void insertAccount(SQLiteDatabase db, String name)
+    {
+        db.execSQL("INSERT INTO ACCOUNT(ID,NAME)" +
+                "VALUES (NULL,'" + name + "')");
     }
 
     @Override

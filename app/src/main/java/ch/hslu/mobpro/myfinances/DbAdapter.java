@@ -60,7 +60,7 @@ public class DbAdapter {
 
     public List<TransactionDto> getAllTransactions()
     {
-        List<TransactionDto> transaction = new ArrayList<>();
+        List<TransactionDto> transactions = new ArrayList<>();
         final Cursor result = db.query(
                 ACCOUNTING_ENTRY_Table,
                 new String[] {
@@ -75,8 +75,30 @@ public class DbAdapter {
         boolean found = result.moveToFirst();
         while (found)
         {
-            transaction.add(getNextTransaction(result));
+            transactions.add(getNextTransaction(result));
             found = result.moveToNext();
+        }
+        result.close();
+        return transactions;
+    }
+
+    public TransactionDto getTransactionById(long id) {
+        TransactionDto transaction = null;
+        final Cursor result = db.query(
+                ACCOUNTING_ENTRY_Table,
+                new String[]{
+                        ID_Entry,
+                        DATE_Entry,
+                        AMOUNT_Entry,
+                        DESCRIPTION_Entry,
+                        ACCOUNT_Entry,
+                        CATEGORY_Entry
+                },
+                ID_Entry + "=" + id,
+                null, null, null, null);
+        boolean found = result.moveToFirst();
+        if (found) {
+            transaction = getNextTransaction(result);
         }
         result.close();
         return transaction;
@@ -84,7 +106,7 @@ public class DbAdapter {
 
     public List<TransactionDto> getTransactionsOfAccount(long accountId)
     {
-        List<TransactionDto> transaction = new ArrayList<>();
+        List<TransactionDto> transactions = new ArrayList<>();
         final Cursor result = db.query(
                 ACCOUNTING_ENTRY_Table,
                 new String[] {
@@ -100,16 +122,23 @@ public class DbAdapter {
         boolean found = result.moveToFirst();
         while (found)
         {
-            transaction.add(getNextTransaction(result));
+            transactions.add(getNextTransaction(result));
             found = result.moveToNext();
         }
         result.close();
-        return transaction;
+        return transactions;
+    }
+
+    public void deleteTransactionWithId(Long id) {
+        db.delete(
+            ACCOUNTING_ENTRY_Table,
+            ID_Entry + "=" + id,
+            null);
     }
 
     private TransactionDto getNextTransaction(Cursor cursor) {
         final TransactionDto transaction = new TransactionDto();
-        transaction.setId(cursor.getFloat(0));
+        transaction.setId(cursor.getLong(0));
         transaction.setDate(new java.sql.Date(cursor.getLong(1)));
         transaction.setAmount(cursor.getFloat(2));
         transaction.setDescription(cursor.getString(3));

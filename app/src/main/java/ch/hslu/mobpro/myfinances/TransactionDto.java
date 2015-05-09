@@ -6,18 +6,18 @@ import java.text.SimpleDateFormat;
 public class TransactionDto {
     public static final String DateFormat = "dd-MM-yyyy";
 
-    private float id;
+    private long id;
     private Date date;
     private float amount;
     private String description;
     private CategoryDto category;
     private AccountDto account;
 
-    public float getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(float id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -64,6 +64,12 @@ public class TransactionDto {
     @Override
     public String toString() {
         SimpleDateFormat format = new SimpleDateFormat(DateFormat);
-        return String.format("%s %.2f Fr %s %s", format.format(date), amount, account.getName(), category.toString());
+        float tempAmount = amount;
+        if (!category.isGain())
+        {
+            tempAmount = -tempAmount;
+        }
+
+        return String.format("%s   Fr: %.2f %nWas: %s | Wie: %s", format.format(date), tempAmount, category.toString(), account.getName());
     }
 }
